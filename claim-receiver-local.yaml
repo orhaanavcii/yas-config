@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /claim-receiver
+rule-service: drools
+
+service:
+  endpoints:
+    auth-server:
+      internal-validate-token: http://localhost:7000/auth-server/api/internal/validate
+    odm:
+      claim-assessment-service: http://localhost:9090/DecisionService/rest/applyAnomalyAssessmentRulesFor/claims
+    drools:
+      claim-assessment-service: http://localhost:8084/droolspot/api/drools/run
+    anomaly-detective:
+      predict-service: http://localhost:8081/anomaly-detective/ai-query/claim/predict
+
+spring:
+  application:
+    name: claim-receiver
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: ${DB_USER:jforce}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:yanginanomali}
+    username: ${DB_USER:jforce}
+  flyway:
+    baseline-on-migrate: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: yas
+        format_sql: false
+    show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: ERROR
+        type:
+          descriptor:
+            sql: ERROR
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/swagger/v3/api-docs
+  swagger-ui:
+    path: /api/swagger/swagger-ui.html
