@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+server:
+  port: 7777
+
+service:
+  endpoints:
+    auth-server:
+      internal-validate-token: http://localhost:7000/auth-server/api/internal/validate
