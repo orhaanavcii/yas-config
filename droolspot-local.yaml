@@ -1,0 +1,15 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /droolspot
+
+spring:
+  application:
+    name: droolspot
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/swagger/v3/api-docs
+  swagger-ui:
+    path: /api/swagger/swagger-ui.html
