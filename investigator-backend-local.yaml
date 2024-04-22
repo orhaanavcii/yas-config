@@ -1,0 +1,45 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /investigator
+spring:
+  application:
+    name: investigator-backend
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: ${DB_USER:jforce}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:yanginanomali}
+    username: ${DB_USER:jforce}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: yas
+        format_sql: false
+    show-sql: true
+
+file:
+  upload-dir: uploads/
+
+service:
+  endpoints:
+    auth-server:
+      internal-validate-token: http://localhost:7000/auth-server/api/internal/validate
+
+logging:
+  level:
+    org:
+      springframework.security: TRACE
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: DEBUG
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/swagger/v3/api-docs
+  swagger-ui:
+    path: /api/swagger/swagger-ui.html
