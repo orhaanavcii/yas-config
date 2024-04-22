@@ -1,0 +1,35 @@
+server:
+  port: 7000
+  servlet:
+    context-path: /auth-server
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: auth-server
+  datasource:
+    password: ${DB_USER:jforce}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:yanginanomali}
+    username: ${DB_USER:jforce}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: yas
+        format_sql: false
+    show-sql: true
+
+access-token-validity-seconds: 86400000 #24L * 60 * 60 * 1000 -> 24 hours for test
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/swagger/v3/api-docs
+  swagger-ui:
+    path: /api/swagger/swagger-ui.html
+
+logging:
+  level:
+    org.springframework.security: TRACE
