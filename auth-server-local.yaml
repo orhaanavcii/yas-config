@@ -35,7 +35,7 @@ logging:
     org.springframework.security: TRACE
     
 management:
-    endpoints:
+  endpoints:
         web:
           exposure:
-              include: "*"
+              include: ["prometheus"]
