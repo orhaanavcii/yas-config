@@ -27,3 +27,16 @@ spring:
 
 geo-metrics:
   buffer-distance: 0.0050 # 500-560 meter
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/swagger/v3/api-docs
+  swagger-ui:
+    path: /api/swagger/swagger-ui.html
+
+management:
+    endpoints:
+        web:
+          exposure:
+              include: ["prometheus"]
