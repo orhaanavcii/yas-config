@@ -17,3 +17,10 @@ service:
   endpoints:
     auth-server:
       internal-validate-token: http://localhost:7000/auth-server/api/internal/validate
+
+
+management:
+    endpoints:
+        web:
+          exposure:
+              include: ["prometheus"]
