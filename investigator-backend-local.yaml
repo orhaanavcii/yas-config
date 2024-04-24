@@ -7,7 +7,7 @@ spring:
     name: investigator-backend
   datasource:
     driverClassName: org.postgresql.Driver
-    password: ${DB_USER:jforce}
+    password: ${DB_PASSWORD:jforce}
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:yanginanomali}
     username: ${DB_USER:jforce}
   jpa:
