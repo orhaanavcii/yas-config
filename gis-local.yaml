@@ -1,4 +1,11 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /gis
+    
 spring:
+  application:
+     name: gis
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:yanginanomali}
     username: ${DB_USER:jforce}
