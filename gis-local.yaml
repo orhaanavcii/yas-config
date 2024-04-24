@@ -7,23 +7,19 @@ spring:
   application:
      name: gis
   datasource:
+    password: ${DB_PASSWORD:jforce}
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:yanginanomali}
     username: ${DB_USER:jforce}
-    password: ${DB_PASSWORD:jforce}
-    driver-class-name: org.postgresql.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
     properties:
       hibernate:
-        ddl-auto: none
-        show-sql: true
-        database: postgresql
-        jdbc:
-          lob:
-          non_contextual_creation: true
-        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
-        default_schema: YAS
-    database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
+        default_schema: yas
+        format_sql: false
+    show-sql: true
 
 geo-metrics:
   buffer-distance: 0.0050 # 500-560 meter
